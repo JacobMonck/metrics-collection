@@ -6,7 +6,7 @@ app = FastAPI()
 app.state.database = database
 
 
-@app.on_event("startup")
+@app.on_event("startup") # type: ignore
 async def startup() -> None:
     _database = app.state.database
 
@@ -14,7 +14,7 @@ async def startup() -> None:
         await _database.connect()
 
 
-@app.on_event("shutdown")
+@app.on_event("shutdown") # type: ignore
 async def shutdown() -> None:
     _database = app.state.database
 
